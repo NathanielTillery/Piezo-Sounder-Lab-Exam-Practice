@@ -8,6 +8,12 @@
 #ifndef GPIO_H_
 #define GPIO_H_
 
+#include <msp.h>
+
+#define BUTTON_MASK             (BIT1 | BIT4)
+#define BUTTON_DEBOUNCE_SAMPLES 10u
+
+
 typedef enum
 {
     BUTTON_EVENT_NONE,
@@ -18,6 +24,7 @@ typedef enum
 
 
 void GPIO_Init(void);
+void GPIO_DebounceTick(void);
 ButtonEvent GPIO_GetButtonEvent(void);
 
 

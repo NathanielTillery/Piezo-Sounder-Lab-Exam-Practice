@@ -11,6 +11,7 @@ CMD_SRCS += \
 C_SRCS += \
 ../GPIO.c \
 ../Piezo.c \
+../SysTick.c \
 ../main.c \
 ../startup_msp432p401r_ccs.c \
 ../system_msp432p401r.c 
@@ -18,6 +19,7 @@ C_SRCS += \
 C_DEPS += \
 ./GPIO.d \
 ./Piezo.d \
+./SysTick.d \
 ./main.d \
 ./startup_msp432p401r_ccs.d \
 ./system_msp432p401r.d 
@@ -25,6 +27,7 @@ C_DEPS += \
 OBJS += \
 ./GPIO.obj \
 ./Piezo.obj \
+./SysTick.obj \
 ./main.obj \
 ./startup_msp432p401r_ccs.obj \
 ./system_msp432p401r.obj 
@@ -32,6 +35,7 @@ OBJS += \
 OBJS__QUOTED += \
 "GPIO.obj" \
 "Piezo.obj" \
+"SysTick.obj" \
 "main.obj" \
 "startup_msp432p401r_ccs.obj" \
 "system_msp432p401r.obj" 
@@ -39,6 +43,7 @@ OBJS__QUOTED += \
 C_DEPS__QUOTED += \
 "GPIO.d" \
 "Piezo.d" \
+"SysTick.d" \
 "main.d" \
 "startup_msp432p401r_ccs.d" \
 "system_msp432p401r.d" 
@@ -46,6 +51,7 @@ C_DEPS__QUOTED += \
 C_SRCS__QUOTED += \
 "../GPIO.c" \
 "../Piezo.c" \
+"../SysTick.c" \
 "../main.c" \
 "../startup_msp432p401r_ccs.c" \
 "../system_msp432p401r.c" 

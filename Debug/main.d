@@ -19,6 +19,7 @@ main.obj: C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h
 main.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdbool.h
 main.obj: ../Piezo.h
 main.obj: ../GPIO.h
+main.obj: ../SysTick.h
 
 ../main.c: 
 C:/ti/ccsv8/ccs_base/arm/include/msp.h: 
@@ -39,3 +40,4 @@ C:/ti/ccsv8/ccs_base/arm/include/system_msp432p401r.h:
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdbool.h: 
 ../Piezo.h: 
 ../GPIO.h: 
+../SysTick.h: 
