@@ -10,13 +10,10 @@
 
 
 #include "SysTick.h"
-
-static volatile uint32_t tonePeriodCounts = SYSTICK_TONE_PERIOD_DEFAULT;
-static uint32_t toneElapsedCounts = 0u;
+#include "Song.h"
 
 
 void SysTick_Init(void){
-    toneElapsedCounts = 0u;
     SysTick_setPeriod(SYSTICK_TICK_COUNTS); // 1 ms tick with a 3 MHz clock
     SysTick->VAL = 0u;
     SysTick_enableInterrupt();
@@ -26,24 +23,7 @@ void SysTick_Init(void){
 
 void SysTick_Handler(void){
     GPIO_DebounceTick();
-
-    toneElapsedCounts += SYSTICK_TICK_COUNTS;
-    if(toneElapsedCounts >= tonePeriodCounts){
-        toneElapsedCounts -= tonePeriodCounts;
-        SysTickTimeout = 1;
-    }
-}
-
-
-void SysTick_setTonePeriod(uint32_t period){
-    if(period < SYSTICK_TONE_PERIOD_MIN){
-        period = SYSTICK_TONE_PERIOD_MIN;
-    }
-    else if(period > SYSTICK_TONE_PERIOD_MAX){
-        period = SYSTICK_TONE_PERIOD_MAX;
-    }
-
-    tonePeriodCounts = period;
+    Song_Tick1ms();
 }
 
 

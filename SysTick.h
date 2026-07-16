@@ -17,16 +17,7 @@
 #include "GPIO.h"
 
 
-/* Variables */
-extern volatile int SysTickTimeout;
-
-
-
 #define SYSTICK_TICK_COUNTS               3000u
-#define SYSTICK_TONE_PERIOD_DEFAULT       375000u
-#define SYSTICK_TONE_PERIOD_MIN           SYSTICK_TICK_COUNTS
-#define SYSTICK_TONE_PERIOD_MAX           500000u
-#define SYSTICK_PERIOD_STEP               50000u
 
 /* Function Declarations */
 
@@ -34,7 +25,6 @@ extern volatile int SysTickTimeout;
 
 void SysTick_Init(void); // Initializes SysTick
 void SysTick_Handler(void); // Handles it
-void SysTick_setTonePeriod(uint32_t period);
 
 /* Following code taken from Texas Instruments driverlib systick.h */
 //*****************************************************************************

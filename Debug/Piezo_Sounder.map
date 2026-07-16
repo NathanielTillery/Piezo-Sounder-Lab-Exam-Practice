@@ -1,32 +1,33 @@
 ******************************************************************************
                   TI ARM Linker PC v18.1.4                     
 ******************************************************************************
->> Linked Thu Jul 16 14:12:46 2026
+>> Linked Thu Jul 16 14:30:36 2026
 
 OUTPUT FILE NAME:   <Piezo_Sounder.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000979
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000ae5
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  MAIN                  00000000   00040000  000009fc  0003f604  R  X
+  MAIN                  00000000   00040000  00000cc0  0003f340  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
-  SRAM_CODE             01000000   00010000  00000220  0000fde0  RW X
-  SRAM_DATA             20000000   00010000  00000220  0000fde0  RW  
+  SRAM_CODE             01000000   00010000  0000021c  0000fde4  RW X
+  SRAM_DATA             20000000   00010000  0000021c  0000fde4  RW  
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00000a00   00000a00    r-x
+00000000    00000000    00000cc4   00000cc4    r-x
   00000000    00000000    000000e4   000000e4    r-- .intvecs
-  000000e4    000000e4    000008f0   000008f0    r-x .text
-  000009d8    000009d8    00000028   00000028    r-- .cinit
-20000000    20000000    00000020   00000000    rw-
-  20000000    20000000    00000020   00000000    rw- .data
+  000000e4    000000e4    00000a5c   00000a5c    r-x .text
+  00000b40    00000b40    00000154   00000154    r-- .const
+  00000c98    00000c98    0000002c   0000002c    r-- .cinit
+20000000    20000000    0000001c   00000000    rw-
+  20000000    20000000    0000001c   00000000    rw- .data
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -39,37 +40,45 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    000000e4     
                   00000000    000000e4     startup_msp432p401r_ccs.obj (.intvecs:retain)
 
-.text      0    000000e4    000008f0     
+.text      0    000000e4    00000a5c     
                   000000e4    00000334     system_msp432p401r.obj (.text)
-                  00000418    00000138     GPIO.obj (.text)
-                  00000550    0000010c     main.obj (.text)
-                  0000065c    000000ec     SysTick.obj (.text)
-                  00000748    000000e8     Piezo.obj (.text)
-                  00000830    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
-                  000008cc    00000068                                   : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
-                  00000934    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  00000978    00000038                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  000009b0    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
-                  000009be    0000000e     startup_msp432p401r_ccs.obj (.text)
-                  000009cc    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  000009d0    00000004                                   : exit.c.obj (.text:abort:abort)
+                  00000418    0000028c     Song.obj (.text)
+                  000006a4    00000138     GPIO.obj (.text)
+                  000007dc    000000e8     Piezo.obj (.text)
+                  000008c4    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000960    00000084     SysTick.obj (.text)
+                  000009e4    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00000a4c    00000054     main.obj (.text)
+                  00000aa0    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00000ae4    00000038                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000b1c    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000b2a    0000000e     startup_msp432p401r_ccs.obj (.text)
+                  00000b38    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000b3c    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    000009d8    00000028     
-                  000009d8    00000015     (.cinit..data.load) [load image, compression = lzss]
-                  000009ed    00000003     --HOLE-- [fill = 0]
-                  000009f0    00000008     (__TI_handler_table)
-                  000009f8    00000008     (__TI_cinit_table)
+.const     0    00000b40    00000154     
+                  00000b40    00000080     Song.obj (.const:frereJacques)
+                  00000bc0    00000060     Song.obj (.const:londonBridge)
+                  00000c20    0000005c     Song.obj (.const:herrMannelig)
+                  00000c7c    00000018     Song.obj (.const:songs)
+
+.cinit     0    00000c98    0000002c     
+                  00000c98    0000001b     (.cinit..data.load) [load image, compression = lzss]
+                  00000cb3    00000001     --HOLE-- [fill = 0]
+                  00000cb4    00000008     (__TI_handler_table)
+                  00000cbc    00000008     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
 .binit     0    00000000    00000000     
 
-.data      0    20000000    00000020     UNINITIALIZED
-                  20000000    00000010     main.obj (.data)
-                  20000010    00000008     SysTick.obj (.data)
-                  20000018    00000004     GPIO.obj (.data)
-                  2000001c    00000004     system_msp432p401r.obj (.data)
+.data      0    20000000    0000001c     UNINITIALIZED
+                  20000000    0000000f     Song.obj (.data)
+                  2000000f    00000004     GPIO.obj (.data)
+                  20000013    00000001     --HOLE--
+                  20000014    00000004     main.obj (.data)
+                  20000018    00000004     system_msp432p401r.obj (.data)
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -80,14 +89,15 @@ MODULE SUMMARY
        Module                        code   ro data   rw data
        ------                        ----   -------   -------
     .\
+       Song.obj                      652    340       30     
        system_msp432p401r.obj        820    0         8      
        GPIO.obj                      312    0         8      
-       main.obj                      268    0         32     
-       SysTick.obj                   236    0         16     
        startup_msp432p401r_ccs.obj   14     228       0      
        Piezo.obj                     232    0         0      
+       SysTick.obj                   132    0         0      
+       main.obj                      84     0         8      
     +--+-----------------------------+------+---------+---------+
-       Total:                        1882   228       64     
+       Total:                        2246   568       54     
                                                              
     C:\ti\ccsv8\tools\compiler\ti-cgt-arm_18.1.4.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        memcpy_t2.asm.obj             156    0         0      
@@ -101,20 +111,20 @@ MODULE SUMMARY
        Total:                        406    0         0      
                                                              
        Stack:                        0      0         1024   
-       Linker Generated:             0      37        0      
+       Linker Generated:             0      43        0      
     +--+-----------------------------+------+---------+---------+
-       Grand Total:                  2288   265       1088   
+       Grand Total:                  2652   611       1078   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000009f8 records: 1, size/record: 8, table size: 8
-	.data: load addr=000009d8, load size=00000015 bytes, run addr=20000000, run size=00000020 bytes, compression=lzss
+__TI_cinit_table @ 00000cbc records: 1, size/record: 8, table size: 8
+	.data: load addr=00000c98, load size=0000001b bytes, run addr=20000000, run size=0000001c bytes, compression=lzss
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 000009f0 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 00000cb4 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 
@@ -123,112 +133,114 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                          
 -------   ----                          
-000009cb  ADC14_IRQHandler              
-000009cb  AES256_IRQHandler             
-000009cb  BusFault_Handler              
-000009d1  C$$EXIT                       
-000009cb  COMP_E0_IRQHandler            
-000009cb  COMP_E1_IRQHandler            
-000009cb  CS_IRQHandler                 
-000009cb  DMA_ERR_IRQHandler            
-000009cb  DMA_INT0_IRQHandler           
-000009cb  DMA_INT1_IRQHandler           
-000009cb  DMA_INT2_IRQHandler           
-000009cb  DMA_INT3_IRQHandler           
-000009cb  DebugMon_Handler              
-000009cb  Default_Handler               
-000009cb  EUSCIA0_IRQHandler            
-000009cb  EUSCIA1_IRQHandler            
-000009cb  EUSCIA2_IRQHandler            
-000009cb  EUSCIA3_IRQHandler            
-000009cb  EUSCIB0_IRQHandler            
-000009cb  EUSCIB1_IRQHandler            
-000009cb  EUSCIB2_IRQHandler            
-000009cb  EUSCIB3_IRQHandler            
-000009cb  FLCTL_IRQHandler              
-000009cb  FPU_IRQHandler                
-00000463  GPIO_DebounceTick             
-00000501  GPIO_GetButtonEvent           
-00000419  GPIO_Init                     
-000009cb  HardFault_Handler             
-000009cb  MemManage_Handler             
-000009cb  NMI_Handler                   
-000009cb  PCM_IRQHandler                
-000009cb  PORT1_IRQHandler              
-000009cb  PORT2_IRQHandler              
-000009cb  PORT3_IRQHandler              
-000009cb  PORT4_IRQHandler              
-000009cb  PORT5_IRQHandler              
-000009cb  PORT6_IRQHandler              
-000009cb  PSS_IRQHandler                
-000009cb  PendSV_Handler                
-00000749  Piezo_Init                    
-000007cb  Piezo_Start                   
-000007e3  Piezo_Stop                    
-00000779  Piezo_UpdateFrequency         
-000009cb  RTC_C_IRQHandler              
-000009bf  Reset_Handler                 
-000009cb  SVC_Handler                   
-2000000c  SysTickCount                  
-20000004  SysTickPeriod                 
-20000008  SysTickTimeout                
-0000067d  SysTick_Handler               
-0000067d  SysTick_Handler               
-0000065d  SysTick_Init                  
-000006ff  SysTick_disableInterrupt      
-000006e7  SysTick_disableModule         
-000006f3  SysTick_enableInterrupt       
-000006db  SysTick_enableModule          
-0000071d  SysTick_getPeriod             
-00000725  SysTick_getValue              
-0000070b  SysTick_setPeriod             
-000006ad  SysTick_setTonePeriod         
-2000001c  SystemCoreClock               
+00000b37  ADC14_IRQHandler              
+00000b37  AES256_IRQHandler             
+00000b37  BusFault_Handler              
+00000b3d  C$$EXIT                       
+00000b37  COMP_E0_IRQHandler            
+00000b37  COMP_E1_IRQHandler            
+00000b37  CS_IRQHandler                 
+00000b37  DMA_ERR_IRQHandler            
+00000b37  DMA_INT0_IRQHandler           
+00000b37  DMA_INT1_IRQHandler           
+00000b37  DMA_INT2_IRQHandler           
+00000b37  DMA_INT3_IRQHandler           
+00000b37  DebugMon_Handler              
+00000b37  Default_Handler               
+00000b37  EUSCIA0_IRQHandler            
+00000b37  EUSCIA1_IRQHandler            
+00000b37  EUSCIA2_IRQHandler            
+00000b37  EUSCIA3_IRQHandler            
+00000b37  EUSCIB0_IRQHandler            
+00000b37  EUSCIB1_IRQHandler            
+00000b37  EUSCIB2_IRQHandler            
+00000b37  EUSCIB3_IRQHandler            
+00000b37  FLCTL_IRQHandler              
+00000b37  FPU_IRQHandler                
+000006ef  GPIO_DebounceTick             
+0000078d  GPIO_GetButtonEvent           
+000006a5  GPIO_Init                     
+00000b37  HardFault_Handler             
+00000b37  MemManage_Handler             
+00000b37  NMI_Handler                   
+00000b37  PCM_IRQHandler                
+00000b37  PORT1_IRQHandler              
+00000b37  PORT2_IRQHandler              
+00000b37  PORT3_IRQHandler              
+00000b37  PORT4_IRQHandler              
+00000b37  PORT5_IRQHandler              
+00000b37  PORT6_IRQHandler              
+00000b37  PSS_IRQHandler                
+00000b37  PendSV_Handler                
+000007dd  Piezo_Init                    
+0000085f  Piezo_Start                   
+00000877  Piezo_Stop                    
+0000080d  Piezo_UpdateFrequency         
+00000b37  RTC_C_IRQHandler              
+00000b2b  Reset_Handler                 
+00000b37  SVC_Handler                   
+00000569  Song_DecreaseTempo            
+00000549  Song_IncreaseTempo            
+00000419  Song_Init                     
+0000046f  Song_Service                  
+0000044d  Song_Tick1ms                  
+00000515  Song_TogglePlayback           
+0000097b  SysTick_Handler               
+0000097b  SysTick_Handler               
+00000961  SysTick_Init                  
+000009ab  SysTick_disableInterrupt      
+00000993  SysTick_disableModule         
+0000099f  SysTick_enableInterrupt       
+00000987  SysTick_enableModule          
+000009c9  SysTick_getPeriod             
+000009d1  SysTick_getValue              
+000009b7  SysTick_setPeriod             
+20000018  SystemCoreClock               
 000000e5  SystemCoreClockUpdate         
 0000035d  SystemInit                    
-000009cb  T32_INT1_IRQHandler           
-000009cb  T32_INT2_IRQHandler           
-000009cb  T32_INTC_IRQHandler           
-000009cb  TA0_0_IRQHandler              
-000009cb  TA0_N_IRQHandler              
-000009cb  TA1_0_IRQHandler              
-000009cb  TA1_N_IRQHandler              
-000009cb  TA2_0_IRQHandler              
-000009cb  TA2_N_IRQHandler              
-000009cb  TA3_0_IRQHandler              
-000009cb  TA3_N_IRQHandler              
-000009cb  UsageFault_Handler            
+00000b37  T32_INT1_IRQHandler           
+00000b37  T32_INT2_IRQHandler           
+00000b37  T32_INTC_IRQHandler           
+00000b37  TA0_0_IRQHandler              
+00000b37  TA0_N_IRQHandler              
+00000b37  TA1_0_IRQHandler              
+00000b37  TA1_N_IRQHandler              
+00000b37  TA2_0_IRQHandler              
+00000b37  TA2_N_IRQHandler              
+00000b37  TA3_0_IRQHandler              
+00000b37  TA3_N_IRQHandler              
+00000b37  UsageFault_Handler            
 4000480c  WDTCTL_SYM                    
-000009cb  WDT_A_IRQHandler              
+00000b37  WDT_A_IRQHandler              
 20010000  __STACK_END                   
 00000200  __STACK_SIZE                  
-000009f8  __TI_CINIT_Base               
-00000a00  __TI_CINIT_Limit              
-000009f0  __TI_Handler_Table_Base       
-000009f8  __TI_Handler_Table_Limit      
-00000935  __TI_auto_init_nobinit_nopinit
-000008cd  __TI_decompress_lzss          
-000009b1  __TI_decompress_none          
+00000cbc  __TI_CINIT_Base               
+00000cc4  __TI_CINIT_Limit              
+00000cb4  __TI_Handler_Table_Base       
+00000cbc  __TI_Handler_Table_Limit      
+00000aa1  __TI_auto_init_nobinit_nopinit
+000009e5  __TI_decompress_lzss          
+00000b1d  __TI_decompress_none          
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
 00000000  __TI_static_base__            
-00000831  __aeabi_memcpy                
-00000831  __aeabi_memcpy4               
-00000831  __aeabi_memcpy8               
+000008c5  __aeabi_memcpy                
+000008c5  __aeabi_memcpy4               
+000008c5  __aeabi_memcpy8               
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
 UNDEFED   __mpu_init                    
 2000fe00  __stack                       
-00000979  _c_int00_noargs               
+00000ae5  _c_int00_noargs               
 UNDEFED   _system_post_cinit            
-000009cd  _system_pre_init              
-000009d1  abort                         
+00000b39  _system_pre_init              
+00000b3d  abort                         
 ffffffff  binit                         
 00000000  interruptVectors              
-00000551  main                          
-00000831  memcpy                        
-20000000  piezoFrequency                
+00000a4d  main                          
+000008c5  memcpy                        
+20000014  piezoFrequency                
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -240,96 +252,98 @@ address   name
 000000e5  SystemCoreClockUpdate         
 00000200  __STACK_SIZE                  
 0000035d  SystemInit                    
-00000419  GPIO_Init                     
-00000463  GPIO_DebounceTick             
-00000501  GPIO_GetButtonEvent           
-00000551  main                          
-0000065d  SysTick_Init                  
-0000067d  SysTick_Handler               
-0000067d  SysTick_Handler               
-000006ad  SysTick_setTonePeriod         
-000006db  SysTick_enableModule          
-000006e7  SysTick_disableModule         
-000006f3  SysTick_enableInterrupt       
-000006ff  SysTick_disableInterrupt      
-0000070b  SysTick_setPeriod             
-0000071d  SysTick_getPeriod             
-00000725  SysTick_getValue              
-00000749  Piezo_Init                    
-00000779  Piezo_UpdateFrequency         
-000007cb  Piezo_Start                   
-000007e3  Piezo_Stop                    
-00000831  __aeabi_memcpy                
-00000831  __aeabi_memcpy4               
-00000831  __aeabi_memcpy8               
-00000831  memcpy                        
-000008cd  __TI_decompress_lzss          
-00000935  __TI_auto_init_nobinit_nopinit
-00000979  _c_int00_noargs               
-000009b1  __TI_decompress_none          
-000009bf  Reset_Handler                 
-000009cb  ADC14_IRQHandler              
-000009cb  AES256_IRQHandler             
-000009cb  BusFault_Handler              
-000009cb  COMP_E0_IRQHandler            
-000009cb  COMP_E1_IRQHandler            
-000009cb  CS_IRQHandler                 
-000009cb  DMA_ERR_IRQHandler            
-000009cb  DMA_INT0_IRQHandler           
-000009cb  DMA_INT1_IRQHandler           
-000009cb  DMA_INT2_IRQHandler           
-000009cb  DMA_INT3_IRQHandler           
-000009cb  DebugMon_Handler              
-000009cb  Default_Handler               
-000009cb  EUSCIA0_IRQHandler            
-000009cb  EUSCIA1_IRQHandler            
-000009cb  EUSCIA2_IRQHandler            
-000009cb  EUSCIA3_IRQHandler            
-000009cb  EUSCIB0_IRQHandler            
-000009cb  EUSCIB1_IRQHandler            
-000009cb  EUSCIB2_IRQHandler            
-000009cb  EUSCIB3_IRQHandler            
-000009cb  FLCTL_IRQHandler              
-000009cb  FPU_IRQHandler                
-000009cb  HardFault_Handler             
-000009cb  MemManage_Handler             
-000009cb  NMI_Handler                   
-000009cb  PCM_IRQHandler                
-000009cb  PORT1_IRQHandler              
-000009cb  PORT2_IRQHandler              
-000009cb  PORT3_IRQHandler              
-000009cb  PORT4_IRQHandler              
-000009cb  PORT5_IRQHandler              
-000009cb  PORT6_IRQHandler              
-000009cb  PSS_IRQHandler                
-000009cb  PendSV_Handler                
-000009cb  RTC_C_IRQHandler              
-000009cb  SVC_Handler                   
-000009cb  T32_INT1_IRQHandler           
-000009cb  T32_INT2_IRQHandler           
-000009cb  T32_INTC_IRQHandler           
-000009cb  TA0_0_IRQHandler              
-000009cb  TA0_N_IRQHandler              
-000009cb  TA1_0_IRQHandler              
-000009cb  TA1_N_IRQHandler              
-000009cb  TA2_0_IRQHandler              
-000009cb  TA2_N_IRQHandler              
-000009cb  TA3_0_IRQHandler              
-000009cb  TA3_N_IRQHandler              
-000009cb  UsageFault_Handler            
-000009cb  WDT_A_IRQHandler              
-000009cd  _system_pre_init              
-000009d1  C$$EXIT                       
-000009d1  abort                         
-000009f0  __TI_Handler_Table_Base       
-000009f8  __TI_CINIT_Base               
-000009f8  __TI_Handler_Table_Limit      
-00000a00  __TI_CINIT_Limit              
-20000000  piezoFrequency                
-20000004  SysTickPeriod                 
-20000008  SysTickTimeout                
-2000000c  SysTickCount                  
-2000001c  SystemCoreClock               
+00000419  Song_Init                     
+0000044d  Song_Tick1ms                  
+0000046f  Song_Service                  
+00000515  Song_TogglePlayback           
+00000549  Song_IncreaseTempo            
+00000569  Song_DecreaseTempo            
+000006a5  GPIO_Init                     
+000006ef  GPIO_DebounceTick             
+0000078d  GPIO_GetButtonEvent           
+000007dd  Piezo_Init                    
+0000080d  Piezo_UpdateFrequency         
+0000085f  Piezo_Start                   
+00000877  Piezo_Stop                    
+000008c5  __aeabi_memcpy                
+000008c5  __aeabi_memcpy4               
+000008c5  __aeabi_memcpy8               
+000008c5  memcpy                        
+00000961  SysTick_Init                  
+0000097b  SysTick_Handler               
+0000097b  SysTick_Handler               
+00000987  SysTick_enableModule          
+00000993  SysTick_disableModule         
+0000099f  SysTick_enableInterrupt       
+000009ab  SysTick_disableInterrupt      
+000009b7  SysTick_setPeriod             
+000009c9  SysTick_getPeriod             
+000009d1  SysTick_getValue              
+000009e5  __TI_decompress_lzss          
+00000a4d  main                          
+00000aa1  __TI_auto_init_nobinit_nopinit
+00000ae5  _c_int00_noargs               
+00000b1d  __TI_decompress_none          
+00000b2b  Reset_Handler                 
+00000b37  ADC14_IRQHandler              
+00000b37  AES256_IRQHandler             
+00000b37  BusFault_Handler              
+00000b37  COMP_E0_IRQHandler            
+00000b37  COMP_E1_IRQHandler            
+00000b37  CS_IRQHandler                 
+00000b37  DMA_ERR_IRQHandler            
+00000b37  DMA_INT0_IRQHandler           
+00000b37  DMA_INT1_IRQHandler           
+00000b37  DMA_INT2_IRQHandler           
+00000b37  DMA_INT3_IRQHandler           
+00000b37  DebugMon_Handler              
+00000b37  Default_Handler               
+00000b37  EUSCIA0_IRQHandler            
+00000b37  EUSCIA1_IRQHandler            
+00000b37  EUSCIA2_IRQHandler            
+00000b37  EUSCIA3_IRQHandler            
+00000b37  EUSCIB0_IRQHandler            
+00000b37  EUSCIB1_IRQHandler            
+00000b37  EUSCIB2_IRQHandler            
+00000b37  EUSCIB3_IRQHandler            
+00000b37  FLCTL_IRQHandler              
+00000b37  FPU_IRQHandler                
+00000b37  HardFault_Handler             
+00000b37  MemManage_Handler             
+00000b37  NMI_Handler                   
+00000b37  PCM_IRQHandler                
+00000b37  PORT1_IRQHandler              
+00000b37  PORT2_IRQHandler              
+00000b37  PORT3_IRQHandler              
+00000b37  PORT4_IRQHandler              
+00000b37  PORT5_IRQHandler              
+00000b37  PORT6_IRQHandler              
+00000b37  PSS_IRQHandler                
+00000b37  PendSV_Handler                
+00000b37  RTC_C_IRQHandler              
+00000b37  SVC_Handler                   
+00000b37  T32_INT1_IRQHandler           
+00000b37  T32_INT2_IRQHandler           
+00000b37  T32_INTC_IRQHandler           
+00000b37  TA0_0_IRQHandler              
+00000b37  TA0_N_IRQHandler              
+00000b37  TA1_0_IRQHandler              
+00000b37  TA1_N_IRQHandler              
+00000b37  TA2_0_IRQHandler              
+00000b37  TA2_N_IRQHandler              
+00000b37  TA3_0_IRQHandler              
+00000b37  TA3_N_IRQHandler              
+00000b37  UsageFault_Handler            
+00000b37  WDT_A_IRQHandler              
+00000b39  _system_pre_init              
+00000b3d  C$$EXIT                       
+00000b3d  abort                         
+00000cb4  __TI_Handler_Table_Base       
+00000cbc  __TI_CINIT_Base               
+00000cbc  __TI_Handler_Table_Limit      
+00000cc4  __TI_CINIT_Limit              
+20000014  piezoFrequency                
+20000018  SystemCoreClock               
 2000fe00  __stack                       
 20010000  __STACK_END                   
 4000480c  WDTCTL_SYM                    
@@ -342,4 +356,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                    
 UNDEFED   _system_post_cinit            
 
-[106 symbols]
+[108 symbols]

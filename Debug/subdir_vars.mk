@@ -11,6 +11,7 @@ CMD_SRCS += \
 C_SRCS += \
 ../GPIO.c \
 ../Piezo.c \
+../Song.c \
 ../SysTick.c \
 ../main.c \
 ../startup_msp432p401r_ccs.c \
@@ -19,6 +20,7 @@ C_SRCS += \
 C_DEPS += \
 ./GPIO.d \
 ./Piezo.d \
+./Song.d \
 ./SysTick.d \
 ./main.d \
 ./startup_msp432p401r_ccs.d \
@@ -27,6 +29,7 @@ C_DEPS += \
 OBJS += \
 ./GPIO.obj \
 ./Piezo.obj \
+./Song.obj \
 ./SysTick.obj \
 ./main.obj \
 ./startup_msp432p401r_ccs.obj \
@@ -35,6 +38,7 @@ OBJS += \
 OBJS__QUOTED += \
 "GPIO.obj" \
 "Piezo.obj" \
+"Song.obj" \
 "SysTick.obj" \
 "main.obj" \
 "startup_msp432p401r_ccs.obj" \
@@ -43,6 +47,7 @@ OBJS__QUOTED += \
 C_DEPS__QUOTED += \
 "GPIO.d" \
 "Piezo.d" \
+"Song.d" \
 "SysTick.d" \
 "main.d" \
 "startup_msp432p401r_ccs.d" \
@@ -51,6 +56,7 @@ C_DEPS__QUOTED += \
 C_SRCS__QUOTED += \
 "../GPIO.c" \
 "../Piezo.c" \
+"../Song.c" \
 "../SysTick.c" \
 "../main.c" \
 "../startup_msp432p401r_ccs.c" \
